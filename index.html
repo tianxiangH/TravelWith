@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>核心功能主页</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background: url('天坛.jpg') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      position: relative;
+      flex-direction: column;
+      gap: 20px;
+    }
+    body::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      backdrop-filter: blur(8px);
+      background: rgba(0, 0, 0, 0.3);
+      z-index: 0;
+    }
+    h1 {
+      color: #fff;
+      margin-bottom: 30px;
+      z-index: 1;
+    }
+    .button-container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      z-index: 1;
+    }
+    .nav-button {
+      padding: 15px 30px;
+      border: none;
+      border-radius: 30px;
+      background-color: #8B4513;
+      color: #fff;
+      font-size: 18px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      width: 220px;
+      text-align: center;
+    }
+    .nav-button:hover {
+      background-color: #5c2c0d;
+    }
+    a {
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>核心功能入口</h1>
+  <div class="button-container">
+    <a href="授权页.html"><button class="nav-button">核心功能一</button></a>
+    <a href="local.html"><button class="nav-button">核心功能二</button></a>
+    <a href="#"><button class="nav-button">核心功能三</button></a>
+    <a href="#"><button class="nav-button">核心功能四</button></a>
+  </div>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>授权定位</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background: url('天坛.jpg') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      position: relative;
+    }
+    body::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      backdrop-filter: blur(8px);
+      background: rgba(0, 0, 0, 0.3);
+      z-index: 0;
+    }
+    .phone {
+      position: relative;
+      width: 400px;
+      height: 800px;
+      border: 12px solid #000;
+      border-radius: 50px;
+      overflow: hidden;
+      background: url('西湖地图.png') no-repeat center center;
+      background-size: cover;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .phone::before {
+      content: "";
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 5px;
+      background: #000;
+      border-radius: 3px;
+      z-index: 3;
+    }
+    .local-container {
+      width: 80%;
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 20px;
+      padding: 20px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      z-index: 2;
+    }
+    .local-image {
+      width: 60%;
+      border-radius: 10px;
+    }
+    .auth-button {
+      padding: 12px 30px;
+      border: none;
+      border-radius: 25px;
+      background-color: #8B4513;
+      color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .auth-button:hover {
+      background-color: #5c2c0d;
+    }
+  </style>
+</head>
+<body>
+  <div class="phone">
+    <div class="local-container">
+      <img src="西湖地图.png" alt="地图" class="local-image">
+      <button class="auth-button" onclick="authorizeLocation()">授权定位</button>
+    </div>
+  </div>
+
+  <script>
+    function authorizeLocation() {
+      window.location.href = "名人同游.html";
+    }
+  </script>
+</body>
+</html>

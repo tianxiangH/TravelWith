@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>名人推荐</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background: url('天坛.jpg') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      position: relative;
+    }
+    body::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      backdrop-filter: blur(8px);
+      background: rgba(0, 0, 0, 0.3);
+      z-index: 0;
+    }
+    .phone {
+      position: relative;
+      width: 400px;
+      border: 12px solid #000;
+      border-radius: 50px;
+      overflow: hidden;
+      background: #000;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .phone::before {
+      content: "";
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 5px;
+      background: #000;
+      border-radius: 3px;
+      z-index: 3;
+    }
+    .recommend-container {
+      width: 100%;
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .background-image {
+      width: 100%;
+      display: block;
+    }
+    .start-button {
+      position: absolute;
+      bottom: 60px;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 30px;
+      background-color: #8B4513;
+      color: #fff;
+      font-size: 18px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .start-button:hover {
+      background-color: #5c2c0d;
+    }
+  </style>
+</head>
+<body>
+  <div class="phone" id="phone">
+    <div class="recommend-container">
+      <img src="苏轼首页.png" alt="苏轼推荐" class="background-image" id="bgImg">
+      <button class="start-button" onclick="startJourney()">开始同游</button>
+    </div>
+  </div>
+
+  <script>
+    function startJourney() {
+      window.location.href = "苏轼同游.html";
+    }
+
+    window.onload = function() {
+      const phone = document.getElementById('phone');
+      const bgImg = document.getElementById('bgImg');
+
+      function adjustHeight() {
+        phone.style.height = bgImg.height + 'px';
+      }
+
+      bgImg.onload = adjustHeight;
+
+      if (bgImg.complete) {
+        adjustHeight();
+      }
+    };
+  </script>
+</body>
+</html>

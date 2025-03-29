@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>用户画像问卷</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background: url('天坛.jpg') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      position: relative;
+    }
+    body::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      backdrop-filter: blur(8px);
+      background: rgba(0, 0, 0, 0.3);
+      z-index: 0;
+    }
+    .phone {
+      position: relative;
+      width: 400px;
+      border: 12px solid #000;
+      border-radius: 50px;
+      overflow: hidden;
+      background: #000;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .phone::before {
+      content: "";
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 5px;
+      background: #000;
+      border-radius: 3px;
+      z-index: 3;
+    }
+    .question-container {
+      background: url('问卷.png') repeat-y top center;
+      background-size: 100% auto;
+      width: 100%;
+      padding: 100px 20px 40px 20px;
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .question {
+      background-color: #ffffffcc;
+      color: #333;
+      border-radius: 20px;
+      padding: 20px;
+      margin: 20px 0;
+      width: 100%;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      animation: fadeIn 1s ease;
+    }
+    .question h2 {
+      font-size: 16px;
+      margin-bottom: 15px;
+    }
+    .options {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .option {
+      padding: 10px;
+      border: none;
+      border-radius: 10px;
+      background-color: #f1f1f1;
+      color: #333;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .option.selected {
+      background-color: #007bff;
+      color: #fff;
+    }
+    .submit {
+      margin: 40px auto 20px;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 15px;
+      background-color: #8B4513;
+      color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      display: block;
+    }
+    .submit:hover {
+      background-color: #5c2c0d;
+    }
+    .recommendation {
+      text-align: center;
+      color: #aaa;
+      margin-top: 20px;
+    }
+    .recommendation img {
+      width: 90%;
+      border: 10px solid #fff;
+      border-radius: 12px;
+      margin-top: 10px;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+    .recommendation img:hover {
+      transform: scale(1.05);
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="phone">
+    <div class="question-container">
+      <div style="height: 100px;"></div>
+      <div class="question" data-question="1">
+        <h2>1. 你更喜欢哪种社交状态?</h2>
+        <div class="options">
+          <button class="option">热闹团体出行</button>
+          <button class="option">一两好友结伴</button>
+          <button class="option">独自探索</button>
+        </div>
+      </div>
+      <div class="question" data-question="2">
+        <h2>2. 面对旅行中计划变化，你的应对方式更偏向:</h2>
+        <div class="options">
+          <button class="option">灵活应变</button>
+          <button class="option">适度调整</button>
+          <button class="option">按原计划</button>
+        </div>
+      </div>
+      <div class="question" data-question="3">
+        <h2>3. 哪一组词更符合你?</h2>
+        <div class="options">
+          <button class="option">快速 + 直觉</button>
+          <button class="option">慢 + 计划</button>
+        </div>
+      </div>
+      <button class="submit" onclick="submitQuestionnaire()">生成我的专属路线</button>
+      <div class="recommendation">
+        <p>其他推荐</p>
+        <img src="李时珍的推荐.png" alt="推荐" onclick="goToRecommend()">
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function submitQuestionnaire() {
+      window.location.href = "recommend.html";
+    }
+
+    function goToRecommend() {
+      window.location.href = "recommend.html";
+    }
+
+    window.onload = function() {
+      const phone = document.querySelector('.phone');
+      const container = document.querySelector('.question-container');
+      phone.style.height = container.scrollHeight + 40 + 'px';
+
+      // 选项单选逻辑
+      document.querySelectorAll('.question').forEach(question => {
+        const options = question.querySelectorAll('.option');
+        options.forEach(option => {
+          option.addEventListener('click', () => {
+            options.forEach(o => o.classList.remove('selected'));
+            option.classList.add('selected');
+          });
+        });
+      });
+    };
+  </script>
+</body>
+</html>
